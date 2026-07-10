@@ -1,6 +1,6 @@
 ---
 name: "Contact 59 Projects"
-photo: "/images/plaza-blanca.jpeg"
+photo: "/images/plaza-blanca-2.png"
 ---
 
 **Email:** [hello@59projects.com](mailto:hello@59projects.com)
