@@ -45,6 +45,7 @@ a {
    link blue, since that color is configurable per-page in content/home.md. */
 .home-subtext a {
   color: inherit;
+  white-space: nowrap;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 3px;
