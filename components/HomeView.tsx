@@ -1,7 +1,6 @@
 "use client";
 
 import { ProjectCard } from "@/components/ProjectCard";
-import { Prose } from "@/components/Prose";
 import { Footer } from "@/components/Footer";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { useTheme } from "@/components/ThemeProvider";
@@ -27,16 +26,16 @@ export function HomeView({ home, projects }: HomeViewProps) {
       <div className="relative isolate w-full">
         <HeroSlideshow images={heroImages} />
 
-        <div className="h-[78px] w-full" />
+        <div className="h-6 w-full md:h-[78px]" />
 
-        <div className="w-5/8 px-[clamp(20px,2.5vw,40px)] pt-60 pb-20">
+        <div className="w-full px-[clamp(20px,2.5vw,40px)] pt-4 pb-10 md:w-5/8 md:pt-60 md:pb-20">
           <h1
-            className="text-[42px] leading-[1.05] font-medium tracking-[-0.02em] sm:text-5xl"
+            className="text-[34px] leading-[1.1] font-medium tracking-[-0.02em] md:text-[42px] md:leading-[1.05] lg:text-5xl"
             style={{ color: home.headlineColor ?? fg }}
             dangerouslySetInnerHTML={{ __html: home.headline }}
           />
           <p
-            className="mt-5 text-xl leading-[1.25] font-normal tracking-[-0.02em] pt-10 pr-40"
+            className="mt-4 text-lg leading-[1.3] font-normal tracking-[-0.02em] md:mt-5 md:pt-10 md:pr-40 md:text-xl md:leading-[1.25]"
             style={{ color: home.subtextColor ?? fg }}
             dangerouslySetInnerHTML={{ __html: home.subtext }}
           />
@@ -54,14 +53,6 @@ export function HomeView({ home, projects }: HomeViewProps) {
             }
           />
         ))}
-      </div>
-
-      <div className="w-full px-[clamp(20px,2.5vw,40px)] pt-11 pb-[26px]">
-        <Prose
-          html={home.bodyHtml}
-          color={fg}
-          className="max-w-[34em] text-[15px] leading-[1.6] font-medium opacity-70"
-        />
       </div>
 
       <Footer color={`${fg}99`} />

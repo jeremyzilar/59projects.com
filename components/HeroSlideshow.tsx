@@ -28,7 +28,7 @@ export function HeroSlideshow({ images }: HeroSlideshowProps) {
   }
 
   return (
-    <div className="group absolute top-0 right-0 bottom-0 -z-10 w-3/8 overflow-hidden">
+    <div className="group relative -z-10 h-[280px] w-full overflow-hidden md:absolute md:top-0 md:right-0 md:bottom-0 md:h-auto md:w-3/8">
       {images.map((src, i) => (
         <Image
           key={src}
@@ -36,7 +36,7 @@ export function HeroSlideshow({ images }: HeroSlideshowProps) {
           alt=""
           fill
           priority={i === 0}
-          sizes="50vw"
+          sizes="(min-width: 768px) 40vw, 100vw"
           quality={85}
           className="object-cover object-center transition-opacity duration-1000 ease-in-out"
           style={{ opacity: i === index ? 1 : 0 }}
