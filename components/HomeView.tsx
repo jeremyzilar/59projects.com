@@ -42,7 +42,7 @@ export function HomeView({ home, projects }: HomeViewProps) {
             dangerouslySetInnerHTML={{ __html: home.headline }}
           />
           <p
-            className="home-subtext mt-4 text-lg leading-[1.3] font-normal tracking-[-0.02em] md:mt-5 md:pt-10 md:pr-40 md:text-xl md:leading-[1.25]"
+            className="home-subtext mt-4 text-lg leading-[1.3] font-normal tracking-[-0.02em] md:mt-5 md:pt-10 md:pr-20 md:text-xl md:leading-[1.25]"
             style={{ color: subtextColor }}
             dangerouslySetInnerHTML={{ __html: home.subtext }}
           />
