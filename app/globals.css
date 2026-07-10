@@ -41,6 +41,19 @@ a {
   text-underline-offset: 3px;
 }
 
+/* Inherits the homepage subtext's own color instead of the site's usual
+   link blue, since that color is configurable per-page in content/home.md. */
+.home-subtext a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.home-subtext a:hover {
+  opacity: 0.75;
+}
+
 .prose-section {
   display: grid;
   grid-template-columns: minmax(120px, 180px) 1fr;
