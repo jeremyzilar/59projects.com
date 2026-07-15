@@ -1,0 +1,43 @@
+---
+description: How page colors and the dark mode toggle work on 59projects.com
+alwaysApply: true
+---
+
+# Page Color System
+
+Every page (home, about, contact, services, contracting, each project) defines
+exactly **two colors** in its markdown frontmatter: `bg` and `fg`. That's the
+whole palette for that page, no third color.
+
+**Dark mode is not "make it black."** The toggle swaps which of the two colors
+is the background and which is the text:
+
+```ts
+const bg = isDark ? page.fg : page.bg;
+const fg = isDark ? page.bg : page.fg;
+```
+
+This is the pattern already used in `ProjectView.tsx` and `ServicesView.tsx`.
+Any new page view should follow it rather than introducing a separate
+dark-mode color pair.
+
+## If a section needs to visually stand out
+
+Don't hardcode a third color or reach for the raw, unswapped
+`page.bg`/`page.fg` values (that would look right in one mode and wrong in
+the other). Instead, use the page's own already-swapped `bg`/`fg` in reverse
+roles for that one section:
+
+```tsx
+style={{ background: fg, color: bg }}
+```
+
+This always contrasts with the rest of the page, and keeps flipping correctly
+when the toggle is used, because it's built from the same two swapped values.
+
+## Other notes
+
+- Derive secondary treatments (dividers, borders, muted text) from `fg`/`bg`
+  with a hex alpha suffix, e.g. `` `${fg}30` ``, rather than a new color.
+- Jeremy is exploring using one of the two colors at partial opacity as a
+  background tint. Still just two base colors per page if you do this.
