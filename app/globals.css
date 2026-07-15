@@ -53,6 +53,24 @@ a {
   margin-inline: auto;
 }
 
+.prose-figure {
+  margin: 1.75em 0;
+}
+
+.prose-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.prose-figure figcaption {
+  margin-top: 0.6em;
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: var(--tw-prose-captions);
+}
+
 .prose a,
 .credits-box-value a {
   color: #1447e6;
@@ -62,9 +80,10 @@ a {
   text-underline-offset: 3px;
 }
 
-/* Inherits the homepage subtext's own color instead of the site's usual
-   link blue, since that color is configurable per-page in content/home.md. */
-.home-subtext a {
+/* Inherits the surrounding text's own color instead of the site's usual
+   link blue, for markdown-driven copy that sets its own color per page
+   (the homepage subtext, the Services closing line). */
+.inherit-color-link a {
   color: inherit;
   white-space: nowrap;
   text-decoration: underline;
@@ -72,7 +91,7 @@ a {
   text-underline-offset: 3px;
 }
 
-.home-subtext a:hover {
+.inherit-color-link a:hover {
   opacity: 0.75;
 }
 
@@ -81,7 +100,11 @@ a {
   grid-template-columns: minmax(120px, 180px) 1fr;
   column-gap: 24px;
   align-items: start;
-  border-top: 1px solid black;
+  /* Full-opacity `fg` (the same variable the heading text itself uses),
+     so this line follows the page's own color and flips with dark mode,
+     but stays a solid line instead of the `<hr>` variable's faint 19%
+     opacity, which read as barely-there. */
+  border-top: 1px solid var(--tw-prose-headings, black);
   padding-top: 0.5rem;
   margin-top: 2rem;
 }
