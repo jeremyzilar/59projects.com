@@ -1,6 +1,16 @@
 import Image from "next/image";
 import clsx from "clsx";
 
+/**
+ * Default floor for how narrow an image can render, regardless of its
+ * natural aspect ratio, when the caller doesn't specify its own via the
+ * `minWidth` prop. Source files whose natural width at the container's
+ * height would fall under this (e.g. a full-page screenshot) get
+ * center-cropped instead of shrinking to an unreadable sliver;
+ * normal-proportioned images are unaffected.
+ */
+const DEFAULT_MIN_WIDTH_PX = 260;
+
 interface ImagePlaceholderProps {
   src?: string;
   alt: string;
@@ -18,13 +28,16 @@ interface ImagePlaceholderProps {
   quality?: number;
   /**
    * Intrinsic pixel size of the source file. When both are provided, the
-   * image renders at its natural aspect ratio instead of being cropped to
-   * fill the container with `fill` + object-cover. Pair with a height-only
-   * className (e.g. `h-[260px]`); the width follows automatically and the
-   * container hugs it, so the full image is always visible, uncropped.
+   * image renders at its natural aspect ratio (via CSS `aspect-ratio`)
+   * instead of filling the container outright. Pair with a height-only
+   * className (e.g. `h-[260px]`); the width follows automatically, down to
+   * `minWidth`, below which the image crops (object-cover) rather than
+   * keep shrinking.
    */
   width?: number;
   height?: number;
+  /** Overrides DEFAULT_MIN_WIDTH_PX, e.g. a narrower floor for mobile screenshots. */
+  minWidth?: number;
 }
 
 export function ImagePlaceholder({
@@ -37,31 +50,35 @@ export function ImagePlaceholder({
   quality = 85,
   width,
   height,
+  minWidth = DEFAULT_MIN_WIDTH_PX,
 }: ImagePlaceholderProps) {
   if (src && width && height) {
     return (
       <div
-        className={clsx(
-          "relative inline-block w-fit overflow-hidden",
-          className
-        )}
+        className={clsx("relative inline-block overflow-hidden", className)}
+        style={{
+          aspectRatio: `${width} / ${height}`,
+          minWidth: `${minWidth}px`,
+        }}
       >
         <Image
           src={src}
           alt={alt}
-          width={width}
-          height={height}
+          fill
           sizes={sizes}
           quality={quality}
           priority={priority}
-          className="h-full w-auto"
+          className="object-cover object-top"
         />
       </div>
     );
   }
 
   return (
-    <div className={clsx("relative min-w-[160px] overflow-hidden", className)}>
+    <div
+      className={clsx("relative overflow-hidden", className)}
+      style={{ minWidth: `${minWidth}px` }}
+    >
       {src ? (
         <Image
           src={src}
