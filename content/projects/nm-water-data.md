@@ -1,8 +1,8 @@
 ---
 number: "04"
 title: "Designing and building a groundwater data platform for New Mexico"
-description: "New Mexico's hydro-geologists needed a single platform to access, edit, and visualize decades of water data across the state. We helped the team ship a working version and build a process they can run on their own."
-deck: "New Mexico's hydro-geologists needed a single platform to access, edit, and visualize decades of water data across the state. We joined an existing engagement with Lakeraven to help a talented but early-stage engineering team find their footing and ship a working product."
+description: "New Mexico's hydrogeologists needed a single platform to access, edit, and visualize decades of water data across the state. We helped the team ship a working version and build a process they can run on their own."
+deck: "New Mexico's hydrogeologists needed a single platform to access, edit, and visualize decades of water data across the state. We joined an existing engagement with Lakeraven to help a talented but early-stage engineering team find their footing and ship a working product."
 bg: "#BCF4E5"
 fg: "#1C3550"
 variant: "full"
