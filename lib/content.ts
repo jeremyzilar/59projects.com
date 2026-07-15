@@ -3,7 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import { imageSize } from "image-size";
 import { markdownToHtml, markdownToInlineHtml } from "@/lib/markdown";
-import { isProjectsSectionHidden } from "@/lib/env";
+import { isProjectsSectionUnlisted } from "@/lib/env";
 import {
   projectFrontmatterSchema,
   aboutFrontmatterSchema,
@@ -88,16 +88,19 @@ async function buildProject(
 }
 
 /**
- * The projects section (homepage cards, Nav's project list, and the project
- * pages themselves) isn't ready to launch yet. Hiding it here, in one place,
- * keeps it out of production while still showing up locally and on Vercel
- * preview deployments, so it can be reviewed before going live. Remove this
- * guard when the section is ready to launch.
+ * The projects section (homepage cards, Nav's project list, and the
+ * sitemap) isn't ready to launch publicly yet. Hiding it here, in one
+ * place, keeps it unlisted in production while still showing up locally
+ * and on Vercel preview deployments, so it can be reviewed before going
+ * live. This does NOT block the project pages themselves from rendering,
+ * see `getProjectBySlug` below, so a direct link can still be shared with
+ * someone ahead of launch. Remove this guard once the section is ready to
+ * be listed for everyone.
  */
-const PROJECTS_SECTION_LIVE = !isProjectsSectionHidden();
+const PROJECTS_SECTION_LISTED = !isProjectsSectionUnlisted();
 
 export async function getAllProjects(): Promise<Project[]> {
-  if (!PROJECTS_SECTION_LIVE) {
+  if (!PROJECTS_SECTION_LISTED) {
     return [];
   }
 
@@ -126,11 +129,13 @@ export async function getAllProjects(): Promise<Project[]> {
   return projects.sort((a, b) => Number(b.number) - Number(a.number));
 }
 
+/**
+ * Deliberately not gated by `PROJECTS_SECTION_LISTED`: a project page
+ * should still open for anyone with the direct URL even while the section
+ * as a whole is unlisted, so specific case studies can be shared ahead of
+ * a public launch.
+ */
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  if (!PROJECTS_SECTION_LIVE) {
-    return null;
-  }
-
   const filePath = path.join(PROJECTS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) {
     return null;
