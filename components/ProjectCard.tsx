@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import posthog from "posthog-js";
+import type { CSSProperties } from "react";
 import type { Project } from "@/lib/schema";
 
 interface ProjectCardProps {
@@ -11,12 +12,24 @@ interface ProjectCardProps {
   >;
 }
 
+/**
+ * Resting state is the same flat light-gray/black pairing on every card, so
+ * the list reads as one plain index; each project's own colors only show
+ * up on hover (or keyboard focus), via CSS custom properties so no
+ * per-project class is needed. The global color transition in globals.css
+ * handles the fade between the two.
+ */
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      style={{ background: project.bg, color: project.fg }}
-      className="group flex w-full items-center justify-between gap-6 rounded-[16px] px-[clamp(20px,2.5vw,40px)] py-8 sm:py-[40px]"
+      style={
+        {
+          "--project-bg": project.bg,
+          "--project-fg": project.fg,
+        } as CSSProperties
+      }
+      className="group flex w-full items-center justify-between gap-6 rounded-[16px] bg-neutral-200 px-[clamp(20px,2.5vw,40px)] py-8 text-black hover:bg-[var(--project-bg)] hover:text-[var(--project-fg)] focus-visible:bg-[var(--project-bg)] focus-visible:text-[var(--project-fg)] sm:py-[40px]"
       onClick={() =>
         posthog.capture("project_card_clicked", {
           project_slug: project.slug,
