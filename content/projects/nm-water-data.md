@@ -1,60 +1,57 @@
 ---
 number: "04"
-title: "New Mexico Water Data"
-description: "New Mexico Bureau of Geology, Minerals and Natural Resources"
-deck: "New Mexico's groundwater researchers needed a single platform to access, edit, and visualize decades of water data across the state. I joined an existing engagement with LakeRaven to help a talented but early-stage engineering team find their footing and ship a working product."
+title: "Designing and building a groundwater data platform for New Mexico"
+description: "New Mexico's hydro-geologists needed a single platform to access, edit, and visualize decades of water data across the state. We helped the team ship a working version and build a process they can run on their own."
+deck: "New Mexico's hydro-geologists needed a single platform to access, edit, and visualize decades of water data across the state. We joined an existing engagement with Lakeraven to help a talented but early-stage engineering team find their footing and ship a working product."
 bg: "#BCF4E5"
 fg: "#1C3550"
 variant: "full"
 externalUrl: "#"
 media:
   - "/images/projects/nm-water-data/ocotillo-wells.jpeg"
+  - "/images/projects/nm-water-data/ocotillo-map.jpeg"
   - "/images/projects/nm-water-data/ocotillo-well-detail.png"
   - "/images/projects/nm-water-data/ocotillo-projects.jpeg"
   - "/images/projects/nm-water-data/ocotillo-mobile.png"
-  - "/images/projects/nm-water-data/ocotillo-map.jpeg"
 credits:
   research: "Savanna Booth-Enoch, Shannon Hurley, Peter Rowland, Jeremy Zilar"
   product: "Savanna Booth-Enoch"
   design: "Jeremy Zilar"
   operations: "Komal Rasheed, Jason Nakai"
   development: "NMBGMR Water Data Engineering Team, Jeremy Zilar, Kimball Bighorse"
-  NMBGMR_ WaterDataEngineeringTeam: "tktk"
+  NMBGMR_WaterDataEngineeringTeam: "tktk"
   dates: "2026"
-  specialThanks: "Rachel Hobbs, Liz Lyons, Nick Tenorio, Stacy Timmonds, Shari Kelley,"
+  specialThanks: "Rachel Hobbs, Liz Lyons, Nick Tenorio, Stacy Timmonds, Shari Kelley"
 buttons:
   - text: "NMBGMR"
     url: "https://geoinfo.nmt.edu/"
   - text: "Public Data"
     url: "https://newweaver.newmexicowaterdata.org/"
-
 ---
 
-## The problem
 
-The platform existed but had never shipped. Large sections said "coming soon." The engineering team, mostly geologists who had taught themselves to code, had been building for nearly a year without a clear definition of what done meant. There were no reliable deployment pipelines, no code review standards, and no sprint rhythm. Meanwhile the field hydrogeologists who needed the platform most had never been asked what they actually needed from it.
+## The Problem
+ 
+By the time we joined, a talented team, engineers from Lakeraven working alongside NMBGMR's own geologists, had already taken the platform from nothing to something real. Lakeraven brought us on partway through to help with product designer to help carry it across the finish line to a true V1.
 
-## How I worked and did not worked
+Like a lot of fast-moving early builds, it had grown ahead of the scaffolding around it. Large sections still said "coming soon," there wasn't yet a shared definition of what shipping V1 actually meant, and the team didn't yet have a deployment pipeline, code review standard, or sprint rhythm to lean on. The field hydrogeologists who would rely on the platform most hadn't been asked yet what they actually needed from it.
+ 
+## How We Worked
+ 
+We started by defining what V1 actually meant, auditing the application and removing or hiding everything that wasn't ready, then setting up production and staging environments with a real deployment process behind them. Sprint planning, backlog refinement, retrospectives, and code review standards followed, giving the team a repeatable way to move work forward instead of building in the dark.
+ 
+We also went into the field. User research with field hydrogeologists showed us how they actually worked, what the printed data sheets got wrong, and what the platform needed to do better. That research shaped a refactor of the front end onto more modern libraries and frameworks, and an engineering plan for making the platform's data fully editable by the people who use it.
+ 
+Further out, we designed and facilitated a three-day roadmap workshop in Socorro that produced a ten-pillar product roadmap the Bureau now owns, and introduced a shared AI practice built around a context repository that lives in GitHub and grows with every pull request, turning AI-assisted development into something the whole team does together, not something any one person does alone.
 
-- Defined what V1 meant by auditing the application and removing or hiding everything that was not ready, then establishing production and staging environments with a clear deployment process
-- Introduced sprint planning, backlog refinement, retrospectives, and code review standards that gave the team a repeatable way to move work forward
-- Conducted user research with field hydrogeologists to understand how they work in the field, what the printed data sheets get wrong, and what the platform needed to do better
-- Refactored the front-end application to use more modern libraries and frameworks
-- Designed the interaction patterns and engineering plan for making the platform's data fully editable by the people who use it
-- Designed and facilitated a three-day roadmap workshop in Socorro that produced a ten-pillar product roadmap the Bureau owns going forward
-- Introduced a shared AI practice including a context repository that lives in GitHub and grows with every pull request, turning AI-assisted development into a collective team capability
+## What Shipped
 
-## What shipped
+![The Ocotillo platform's Projects view, rebuilt on the new front end.](/images/projects/nm-water-data/ocotillo-projects.jpeg)
 
-- A live V1 platform with real production and staging environments
-- Sprint ceremonies and engineering practices the team now runs independently
-- A geologist-facing front-end built on modern frameworks
-- An editing framework ready to roll out across core record types
-- A ten-pillar product roadmap grounded in user research and stakeholder interviews
-- A shared AI context repository used by the full engineering team
+A live V1 platform shipped, with real production and staging environments behind it. The team now runs its own sprint ceremonies and engineering practices without us in the room. The front end was rebuilt for geologists on modern frameworks, and there's an editing framework ready to roll out across the platform's core record types. A ten-pillar product roadmap, grounded in user research and stakeholder interviews, gives the Bureau a plan it can execute on its own. And a shared AI context repository, used by the full engineering team, keeps growing with every pull request.
 
-## What I learned
+## What We Learned
 
 Getting a team unstuck is as much about creating a moment of celebration as it is about process. V1 shipping meant sending one email to the Bureau. That was enough. The team had been working in abstraction for nine months and needed to feel that something real had happened before they could move forward with confidence.
 
-The most powerful moment of the engagement came at the end of a user research session with field hydrogeologists. I took the full transcript, added it to the shared context repository, generated Jira tickets from it using an AI tool, and then walked the development team through watching Claude Code implement the changes live. Eight tickets. Ten minutes. Research to working software in a single session. That set the standard for how the team works going forward.
+The most powerful moment of the engagement came at the end of a user research session with field hydrogeologists. We took the full transcript, added it to the shared context repository, generated Jira tickets from it using an AI tool, and then walked the development team through watching Claude Code implement the changes live. Eight tickets. Ten minutes. Research to working software in a single session. That set the standard for how the team works going forward.
