@@ -23,7 +23,7 @@ process:
     body: "We build the lightweight tools and processes that solve the actual problem, not the biggest possible version of it. Working software over long specs."
   - title: "Hand It Off"
     body: "The goal isn't to make an organization dependent on us. It's to leave them with tools, process, and confidence to keep moving on their own."
-bg: "#fce7f3"
+bg: "#ffedd5"
 fg: "#1e1b4b"
 closing: "If this sounds like the kind of problem you're working on, [we'd like to hear about it](/contact) →."
 photo: "/images/plaza-blanca-2.jpg"
