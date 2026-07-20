@@ -21,7 +21,7 @@ hello@59projects.com\
 
 | | |
 |---|---|
-| **SAM.gov UEI** | [add when registered] |
+| **SAM.gov UEI** | XWHGKEHK2CJ3 |
 | **CAGE Code** | [add when registered] |
 | **eProNM Vendor Number** | [add number] |
 | **OpenGov Procurement Profile** | [59 Projects on OpenGov](https://procurement.opengov.com/vendors/478471/profile) |
@@ -93,6 +93,6 @@ If you are pursuing a contract that could benefit from this kind of work, get in
 
 ## Notes
 
-- SAM.gov registration in progress. UEI and CAGE Code will be added when complete.
+- SAM.gov Unique Entity ID (UEI) received. Full entity registration (required for federal contracting eligibility, and for a CAGE Code) still in progress.
 - 59 Projects is a New Mexico-based small business. We are familiar with state procurement systems including eProNM and the State Purchasing Division.
 - We welcome opportunities from state agencies, local governments, tribal nations, nonprofits, and federal prime contractors.
